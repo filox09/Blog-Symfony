@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <form action="{{ path('blog_edit', {'id' : article.id}) }}" class="d-md-flex justify-content-md-end">
+         <button class="btn btn-success" type="submit">Modifier l'article</button>
+    </form>
+
+    <articles>
+        <h2>{{article.title}}</h2>
+        <div class="content">
+            <img src="{{ article.image }}" alt="">
+            <div class="metadata mb-5">Ecrit le {{ article.createdAt | date('d/m/Y')  }} à {{ article.createdAt | date('H:i')  }} dans la catégorie Sport</div>
+
+            {{ article.content | raw }}
+        </div>
+    </articles>
+    
+{% endblock %}

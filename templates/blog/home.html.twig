@@ -1,0 +1,29 @@
+{% extends 'base2.html.twig' %}
+
+
+
+{% block body %}
+    <!-- Page Content -->
+    <section class="py-5">
+    <div class="container">
+        <h1 class="display-4 mb-3 ">{{ title }}</h1>
+        
+        <p class="lead">The background images for the slider are set directly in the HTML using inline CSS. The images in this snippet are from <a href="https://unsplash.com">Unsplash</a>, taken by <a href="https://unsplash.com/@joannakosinska">Joanna Kosinska</a>!</p>
+        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium nesciunt aliquam quo, nulla tenetur quae labore libero temporibus optio recusandae porro hic debitis rerum dolor iure voluptates culpa minima cum odio dicta! Commodi possimus nostrum blanditiis ullam quis, repudiandae culpa?
+        Atque unde consequuntur ipsam tempore molestiae nostrum consectetur dolorum pariatur asperiores, natus, itaque officiis ratione veritatis repellendus ipsa vero ab dolores libero minus culpa ipsum quasi. Vero aliquid nisi dicta reprehenderit veniam illum a illo deserunt aliquam dignissimos, magnam molestias?</p>
+
+        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium nesciunt aliquam quo, nulla tenetur quae labore libero temporibus optio recusandae porro hic debitis rerum dolor iure voluptates culpa minima cum odio dicta! Commodi possimus nostrum blanditiis ullam quis, repudiandae culpa?</p>
+        <p class="lead">Atque unde consequuntur ipsam tempore molestiae nostrum consectetur dolorum pariatur asperiores, natus, itaque officiis ratione veritatis repellendus ipsa vero ab dolores libero minus culpa ipsum quasi. Vero aliquid nisi dicta reprehenderit veniam illum a illo deserunt aliquam dignissimos, magnam molestias?</p>
+
+       
+    </div>
+    </section>
+
+    {% if age >= 18 %}
+        <p>tu es majeur : {{ age }} ans</p>
+    {% else %}
+        <p>tu es mineur</p>
+    {% endif %}
+
+   
+{% endblock %}
