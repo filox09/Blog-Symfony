@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}PaperPlane | {{article.title}} {% endblock %}
+
 {% block body %}
 
     <form action="{{ path('blog_edit', {'id' : article.id}) }}" class="d-md-flex justify-content-md-end">
