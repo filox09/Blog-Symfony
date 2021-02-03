@@ -10,7 +10,7 @@
         <h2>{{article.title}}</h2>
         <div class="content">
             <img src="{{ article.image }}" alt="">
-            <div class="metadata mb-5">Ecrit le {{ article.createdAt | date('d/m/Y')  }} à {{ article.createdAt | date('H:i')  }} dans la catégorie Sport</div>
+            <div class="metadata mb-5">Ecrit le {{ article.createdAt | date('d/m/Y')  }} à {{ article.createdAt | date('H:i')  }} <span class="badge rounded-pill bg-info text-light">{{ article.category.title }}</span> </div>
 
             {{ article.content | raw }}
         </div>

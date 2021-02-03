@@ -10,7 +10,7 @@
         <h2>{{ article.title }}</h2>
         <div class="content mb-5">
             <img src="{{ article.image }}" alt="">
-            <div class="metadata mb-3">Ecrit le {{ article.createdAt | date('d/m/Y')  }} à {{ article.createdAt | date('H:i')  }} dans la catégorie Sport</div> {# l'interpolation de twig affiche une variable mais se limite au donnée primitive string bolean etc .. donc ont utilise un filtre pour la date avec le pipe | date('d/m/Y') (twig filters recherche google) #}
+            <div class="metadata mb-3">Ecrit le {{ article.createdAt | date('d/m/Y')  }} à {{ article.createdAt | date('H:i')  }} <span class="badge rounded-pill bg-info text-light">{{ article.category.title }}</span></div> {# l'interpolation de twig affiche une variable mais se limite au donnée primitive string bolean etc .. donc ont utilise un filtre pour la date avec le pipe | date('d/m/Y') (twig filters recherche google) #}
             {{ article.content | raw }}
             <a href="{{ path('blog_show', {'id' : article.id}) }}" class="btn btn-primary">Lire la suite</a>
         </div>
