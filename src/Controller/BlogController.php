@@ -33,7 +33,7 @@ class BlogController extends AbstractController
     public function home() {
         return $this->render('blog/home.html.twig', [
             'title' => "Welcome on Board !",
-            'age' => 25
+            'username' => "Guillaume"
         ]);
     }
 

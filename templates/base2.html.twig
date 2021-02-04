@@ -7,6 +7,7 @@
 
         {% block stylesheets %}{% endblock %}
         <link rel="stylesheet" href="{{ asset('build/app.css')}}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 
         {% block javascripts %}{% endblock %}
     </head>
@@ -27,6 +28,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('security_registration') }}">Inscription</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('security_login') }}">Connexion</a>
                     </li>
                 </ul>
             </div>
@@ -76,7 +80,7 @@
         <div class="container">
             {% block body %}{% endblock %}
         </div>
-         <div class="container-fluid pb-0 mb-0 justify-content-center text-light ">
+ <div class="container-fluid pb-0 mb-0 justify-content-center text-light ">
             <footer>
                 <div class="row my-5 justify-content-center py-5">
                     <div class="col-11">
