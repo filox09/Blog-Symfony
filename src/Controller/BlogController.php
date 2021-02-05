@@ -7,9 +7,12 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 
 use App\Entity\Article; /* ne pas oublier le use vue que la Class Article est utilisé */
+use App\Entity\Comment;
+use App\Form\CommentType;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
+
 
 class BlogController extends AbstractController
 {
@@ -78,11 +81,24 @@ class BlogController extends AbstractController
     /** 
      * @route("/blog/{id}", name="blog_show")
      */
-    public function show(Article $article) {
+    public function show(Article $article, Request $request, EntityManagerInterface $manager) {
         /* $repo = $this->getDoctrine()->getRepository(Article::class);  on utilise ArticleRepository $repo voir l16*/
         /* $article = $repo->find($id); */
+        $comment = new Comment();
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()) {
+            $comment->setCreatedAt(new \DateTime())
+                    ->setArticle($article);
+            $manager->persist($comment);
+            $manager->flush();
+
+            return $this->redirectToRoute('blog_show', [ 'id' => $article->getId()]);
+        }
+
         return $this->render('blog/show.html.twig', [
-            'article' => $article
+            'article' => $article,
+            'commentForm' => $form->createView()
         ]);
     }
 

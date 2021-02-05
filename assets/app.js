@@ -12,3 +12,10 @@ import './styles/app.scss';
 import './bootstrap';
 import bsCustomFileInput from 'bs-custom-file-input';
 bsCustomFileInput.init();
+
+// jquery for bootstrap active link in navbar
+
+/* $(".nav .nav-link").on("click", function(){
+    $(".nav").find(".active").removeClass("active");
+    $(this).addClass("active");
+ }); */

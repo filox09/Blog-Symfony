@@ -17,7 +17,7 @@
             {{ article.content | raw }}
         </div>
     </articles>
-    <h3 class="mt-5"> Commentaires </h3>
+    <h3 class="mt-5"> {{ article.comments | length }} Commentaires :</h3>
     <hr>
     <section id="commentaires">
         {% for comment in article.comments %}
@@ -32,5 +32,24 @@
                 </div>
             </div>
         {% endfor %}
+            <h4 class="mb-3 mt-4">Ajouter votre commentaire : </h4>
+            <hr>
+        {% if app.user %}
+
+            {{ form_start(commentForm) }}
+                {{ form_row(commentForm.author, {'attr': {'placeholder' : "Votre nom"}}) }}
+                {{ form_row(commentForm.content, {'attr': {'placeholder' : "Votre commentaire"}}) }}
+            <button type="submit" class="btn btn-success">Commenter</button>
+            {{ form_end(commentForm) }}
+
+        {% else %}
+           <div class="text-center">
+            <br>
+            <p>Vous ne pouvez pas commenter si vous n'êtes pas connecté ou inscrit sur le site</p>
+            <a href="{{ path('security_login') }}" class="btn btn-primary">Se connecter</a> <a href="{{ path('security_registration') }}" class="btn btn-primary">S'inscrire</a>
+           </div>
+        {% endif %}
     </section>
+
+
 {% endblock %}
