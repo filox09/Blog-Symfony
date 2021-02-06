@@ -50,6 +50,8 @@ class BlogController extends AbstractController
             $article = new Article();
         }
 
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY'); // la route fonctionne uniquement si la personne est connecté 
+
         // $form = $this->createFormBuilder($article)
         //              ->add('title')
         //              ->add('content')

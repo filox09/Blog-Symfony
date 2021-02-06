@@ -4,12 +4,15 @@
 
 {% block body %}
 
-    <form action="{{ path('blog_edit', {'id' : article.id}) }}" class="d-md-flex justify-content-md-end">
-         <button class="btn btn-success" type="submit">Modifier l'article</button>
-    </form>
+    {% if not app.user %}
+    {% else %}
+        <form action="{{ path('blog_edit', {'id' : article.id}) }}" class="d-md-flex justify-content-md-end">
+            <button class="btn btn-success mt-3" type="submit">Modifier l'article</button>
+        </form>
+    {% endif %}
 
     <articles>
-        <h2>{{article.title}}</h2>
+        <h2 class="mt-5 mb-3">{{article.title}}</h2>
         <div class="content">
             <img src="{{ article.image }}" alt="">
             <div class="metadata mb-5">Ecrit le {{ article.createdAt | date('d/m/Y')  }} à {{ article.createdAt | date('H:i')  }} <span class="badge rounded-pill bg-info text-light">{{ article.category.title }}</span> </div>

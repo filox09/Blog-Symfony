@@ -6,36 +6,33 @@
 
     <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-            <a class="nav-link" href="{{ path('blog') }}">Articles
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true"></i></a>
-            <div class="dropdown-menu">
-            <a class="dropdown-item"  href="{{ path('blog_create') }}">Créer un article</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item"  href="{{ path('security_registration') }}">Inscription</a>
-            </div>
-        </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ path('blog') }}">Articles
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
         </ul>
         <div class="form-inline my-2 my-lg-0">
-            <ul class="navbar-nav mr-auto">
-            {% if not app.user %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('security_login') }}">Connexion</a>
+            <ul class="navbar-nav mr-auto dropleft">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true"></i></a>
+                    <div class="dropdown-menu">
+                     {% if not app.user %}
+                        <a class="dropdown-item"  href="{{ path('security_login') }}">Connexion</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item"  href="{{ path('security_registration') }}">Inscription</a>
+                    {% else %}
+                        <a class="dropdown-item"  href="{{ path('security_logout') }}">Deconnexion</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item"  href="{{ path('blog_create') }}">Créer un article</a>
+                    {% endif %}
+                    </div>
                 </li>
-            {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('security_logout') }}">Deconnexion</a>
-                </li>
-            {% endif %}
             </ul>
         </div>
     </div>
