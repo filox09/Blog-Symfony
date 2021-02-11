@@ -34,4 +34,6 @@ final class Version20210201201020 extends AbstractMigration
         $this->addSql('DROP INDEX IDX_23A0E6612469DE2 ON article');
         $this->addSql('ALTER TABLE article DROP category_id');
     }
+
+    
 }
