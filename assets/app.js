@@ -15,7 +15,9 @@ bsCustomFileInput.init();
 
 // jquery for bootstrap active link in navbar
 
-/* $(".nav .nav-link").on("click", function(){
+$(".nav .nav-link").on("click", function(){
     $(".nav").find(".active").removeClass("active");
     $(this).addClass("active");
- }); */
+ });
+
+ console.log("init");
