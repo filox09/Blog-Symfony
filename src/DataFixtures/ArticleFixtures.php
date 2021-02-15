@@ -4,7 +4,7 @@ namespace App\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-use App\Entity\Article; /* ne pas oublier un user pour expliquer a php d'ou vien la class Article */
+use App\Entity\Article;
 use App\Entity\Category;
 use App\Entity\Comment;
 
