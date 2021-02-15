@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
-//@import '~bootstrap/scss/bootstrap';
+
+@import "variables.scss";
+@import "~font-awesome/scss/font-awesome";
+@import '~bootstrap/scss/bootstrap';
+@import "bootswatch.scss";
 
 body {
     background: linear-gradient(0deg, #fff, 50%, #DEEEFE);
@@ -50,3 +54,4 @@ h3 {
 .rights {
     font-size: calc(10px + (12 - 10) * ((100vw - 360px) / (1600 - 360))) !important
 }
+
