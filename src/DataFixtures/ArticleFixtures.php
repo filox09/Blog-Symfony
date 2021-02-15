@@ -7,13 +7,15 @@ use Doctrine\Persistence\ObjectManager;
 use App\Entity\Article;
 use App\Entity\Category;
 use App\Entity\Comment;
+use Faker\Factory;
+
 
 class ArticleFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
         // use the factory to create a Faker\Generator instance
-        $faker = \Faker\Factory::create('fr_FR');
+        $faker = Factory::create('fr_FR');
         
         //Créer 3 catégories fake
         for($i = 1; $i <= 3; $i++ ) {
