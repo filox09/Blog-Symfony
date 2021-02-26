@@ -3,7 +3,7 @@
 {% block title %}PaperPlane | Blog{% endblock %}
 
 {% block body %}
-
+<br><br> {# to delete > SCSS #}
 <h1 class="mb-5 mt-5">Nos articles</h1>
 
 <section class="articles">
@@ -18,6 +18,40 @@
         </div>
     </articles>
 {% endfor %}   
-
 </section>
+
+
+
+
+{# total items count #}
+<div class="count">
+    {{ articles.getTotalItemCount }} articles au total
+</div>
+<table class="container">
+    <tr>
+        {# sorting of properties based on query components #}
+        <th>{{ knp_pagination_sortable(articles, 'Id', 'a.id') }}</th>
+        <th{% if articles.isSorted('a.Title') %} class="sorted"{% endif %}>
+            {{ knp_pagination_sortable(articles, 'Title', 'a.title') }}
+        </th>
+        <th{% if articles.isSorted(['a.date', 'a.time']) %} class="sorted"{% endif %}>
+            {{ knp_pagination_sortable(articles, 'Release', ['a.date', 'a.time']) }}
+        </th>
+    </tr>
+
+    {# table body #}
+    {% for article in articles %}
+        <tr {% if loop.index is odd %}class="color"{% endif %}>
+            <td>{{ article.id }}</td>
+            <td>{{ article.title }}</td>
+            <td>{{ article.createdAt | date('Y-m-d') }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+{# display navigation #}
+<br>
+<div class="navigation">
+    {{ knp_pagination_render(articles) }}
+</div>
 {% endblock %}

@@ -12,18 +12,24 @@ use App\Form\CommentType;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
-
+use Knp\Component\Pager\PaginatorInterface;
 
 class BlogController extends AbstractController
 {
     /**
      * @Route("/blog", name="blog")
      */
-    public function index(ArticleRepository $repo) /*Grace à l'intence de la class ArticleRepository $repo j'exprime a symfony le repo la ligne 18 ne sert plus  */
+    public function index(ArticleRepository $repo, Request $request, PaginatorInterface $paginator) /*Grace à l'intence de la class ArticleRepository $repo j'exprime a symfony le repo la ligne 18 ne sert plus  */
     {
         /* $repo = $this->getDoctrine()->getRepository(Article::class);utilisation de doctrine pour avoir le bon repository qui gêre la class Article */
 
-        $articles = $repo->findAll(); /* création de la variable articles qui va contenir tout nos articles ex : findOneByTitle("Titre de l'article") */
+        $data = $repo->findAll(); /* création de la variable articles qui va contenir tout nos articles ex : findOneByTitle("Titre de l'article") */
+
+        $articles = $paginator->paginate(
+            $data,
+            $request->query->getInt('page',1),
+            4
+        );
 
         return $this->render('blog/index.html.twig', [
             'controller_name' => 'BlogController',
